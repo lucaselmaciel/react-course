@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import P from 'prop-types';
 import './App.css';
+import { useState } from 'react';
+
+
+const Button = ({incrementButton}) => {
+  return <button onClick={() => incrementButton(10)}>+</button>
+}
+
+Button.propTypes = {
+  incrementButton: P.func
+}
 
 function App() {
+  const [counter, setCounter] = useState(0);
+  const incrementButton = (increment) => {
+    setCounter(counter + increment);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Teste 3</p>
+      <h1>Contador: {counter}</h1>
+      <Button incrementButton={incrementButton} />
     </div>
   );
 }
